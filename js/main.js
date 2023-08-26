@@ -1,6 +1,6 @@
 let button = document.querySelector("button.get");
 let fetchComments =async() => {
-   try {
+   try { 
     html = "";
     let res= await axios.get("https://jsonplaceholder.typicode.com/comments")
     res.data.forEach((elem)=>{
