@@ -1,7 +1,8 @@
 let button = document.querySelector("button.get");
 let fetchComments =async() => {
+   try {
     html = "";
-    let res= await axios.get("https://jsonplaceholder.typicode.com/comments").catch((err)=>document.querySelector("div.wrapper").innerText=err)
+    let res= await axios.get("https://jsonplaceholder.typicode.com/comments")
     res.data.forEach((elem)=>{
         html += `<div class="comment">
                     <h2 class="postId">postId: ${elem.postId}</h2>
@@ -12,5 +13,8 @@ let fetchComments =async() => {
                 </div>`;
     })
     document.querySelector("div.wrapper").innerHTML=html
+   } catch (error) {
+    document.querySelector("div.wrapper").innerHTML=error
+   }
 };
 button.addEventListener("click", fetchComments);
